@@ -10,6 +10,8 @@ RUN apt update && apt install -y \
 
 RUN apt install -y tmux canberra-gtk*
 
+RUN apt install -y ros-melodic-jsk-common ros-melodic-jskeus
+
 SHELL ["/bin/bash", "-c"]
 
 RUN mkdir -p /catkin_ws/src
