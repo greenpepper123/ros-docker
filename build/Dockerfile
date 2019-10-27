@@ -36,5 +36,6 @@ RUN cd .. ; \
 ENV DISPLAY :0
 ENV NO_AT_BRIDGE 1
 
-RUN echo -e 'function setupros() {\nsource /opt/ros/melodic/setup.bash\nsource /catkin_ws/devel/setup.bash\n}\nfunction rosnode-killall () {\nwhile read -r NODE; do\nif [ $NODE != "/rosout" ]; then\nrosnode kill "$NODE"\nfi\ndone < <(rosnode list)\n}' >> /root/.bashrc
-RUN echo -e 'au BufNewFile,BufRead *.launch set filetype=xml' >> /etc/vim/vimrc
+RUN echo -e 'function setupros() {\nsource /opt/ros/melodic/setup.bash\nsource /catkin_ws/devel/setup.bash\n}\nfunction rosnode-killall () {\nwhile read -r NODE; do\nif [ $NODE != "/rosout" ]; then\nrosnode kill "$NODE"\nfi\ndone < <(rosnode list)\n}\nsetupros' >> /root/.bashrc; \
+    echo -e "set expandtab\nset tabstop=4\nset shiftwidth=4\nset completeopt=menuone\nset nocompatible\nset wildmenu\nset wildmode=longest:full,full\nset whichwrap=b,s,[,],<,>\nau BufNewFile,BufRead *.launch set filetype=xml" >> /usr/share/vim/vimrc; \
+    echo -e "set -g mouse on\nset -g status-position top\nset-option -g history-limit 10000" > /root/.tmux.conf
